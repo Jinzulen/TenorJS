@@ -11,12 +11,11 @@ exports.callAPI = function (Path, Callback)
             let Error, rawData = "";
             const Code = Result.statusCode, Type = Result.headers["content-type"];
 
-            if (Code !== 200)
-            {
-                  Error = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
+            if (Code !== 200) {
+                  Error      = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
                   Error.code = "ERR_REQ_SEND";
             } else if (Type.indexOf("application/json") === -1) {
-                  Error = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
+                  Error      = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
                   Error.code = "ERR_RES_NOT";
             }
 
@@ -28,14 +27,10 @@ exports.callAPI = function (Path, Callback)
             Result.on("end", () => {
                   let Data = null, Error = null;
 
-                  try {
-                        Data = JSON.parse(JSON.stringify(rawData));
-                  } catch (unusedError) {
+                  try { Data = JSON.parse(JSON.stringify(rawData)); } catch (unusedError) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
                         Error.code = "ERR_JSON_PARSE";
-                  };
-                  
-                  Callback(Error, Data);
+                  }; Callback(Error, Data);
             });
       });
 };
@@ -43,7 +38,7 @@ exports.callAPI = function (Path, Callback)
 exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
 {
       this.callAPI(Endpoint, (Error, Result) => {
-            if (Error) if (typeof Callback === "function") { Callback(Error); }; pReject(Error);
+            if (Error) { if (typeof Callback === "function") { Callback(Error); }; pReject(Error); };
             if (typeof Callback === "function") { Callback(null, Result[0]); };
             pResolve(JSON.parse(Result));
       });

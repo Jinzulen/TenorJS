@@ -7,7 +7,8 @@
 
 exports.client = function (Credentials)
 {
-      const Filters = ["off", "low", "medium", "high"], MediaFilters = ["basic", "minimal"];
+      const Filters      = ["off", "low", "medium", "high"],
+            MediaFilters = ["basic", "minimal"];
 
       if (!Credentials.Key || !Credentials.Locale || !Credentials.Filter)
       {
