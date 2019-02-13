@@ -17,6 +17,33 @@ module.exports = function (Credentials, Utilities)
 
       const Methods = {};
 
+      Methods.random = function (Term, Limit, Callback)
+      {
+            return new Promise((Resolve, Reject) => {
+                  const Endpoint = `https://api.tenor.com/v1/random?q=${Term}&key=${Key}&limit=${Limit}&contentfilter=${Filter}&locale=${Locale}&media_filter=${MediaFilter}`;
+
+                  Utilities.callAPI(Endpoint, (Error, Result) => {
+                        if(Error)
+                        {
+                              if (typeof Callback === "function")
+                              {
+                                    Callback(Error);
+                              };
+      
+                              Reject(Error);
+                              return;
+                        };
+      
+                        if (typeof Callback === "function")
+                        {
+                              Callback(null, Result[0]);
+                        };
+
+                        Resolve(JSON.parse(Result));
+                  });
+            });
+      };
+
       Methods.query = function (Term, Limit, Callback)
       {
             return new Promise((Resolve, Reject) => {
@@ -71,7 +98,7 @@ module.exports = function (Credentials, Utilities)
             });
       };
 
-      Methods.trending_terms = function (Limit, Callback)
+      Methods.trending_terms = function (Callback)
       {
             return new Promise((Resolve, Reject) => {
                   const Endpoint = `https://api.tenor.com/v1/trending_terms?key=${Key}`;
