@@ -7,23 +7,11 @@
 
 exports.client = function (Credentials)
 {
-      const Filters = ["off", "low", "medium", "high"];
+      const Filters = ["off", "low", "medium", "high"], MediaFilters = ["basic", "minimal"];
 
-      const MediaFilters = ["basic", "minimal"];
-
-      if (!Credentials.Key)
+      if (!Credentials.Key || !Credentials.Locale || !Credentials.Filter)
       {
-            throw new Error ("Developer API key is missing.");
-      };
-
-      if (!Credentials.Locale)
-      {
-            throw new Error ("Content locale is not configured.");
-      };
-
-      if (!Credentials.Filter)
-      {
-            throw new Error ("Content filter level is not configured.");    
+            throw new Error ("Client configuration is not complete; please ensure all configuration parameters are satisfied (Key, Locale, Filter).");
       };
       
       if (!Filters.includes(Credentials.Filter.toLowerCase()))
@@ -37,9 +25,7 @@ exports.client = function (Credentials)
             {
                   throw new Error ("Media content filter has to be one of these options: basic, minimal.");
             };
-      } else if (!Credentials.MediaFilter) {
-            Credentials.MediaFilter = "minimal";
-      };
+      } else if (!Credentials.MediaFilter) { Credentials.MediaFilter = "minimal"; };
 
       return require("./src")(Credentials);
 };
