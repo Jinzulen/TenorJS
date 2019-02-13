@@ -8,8 +8,11 @@ const HTTPS = require("https");
 exports.callAPI = function (Path, Callback)
 {
       HTTPS.get(Path, (Result) => {
-            let Error, rawData = "";
-            const Code = Result.statusCode, Type = Result.headers["content-type"];
+            let Error;
+            let rawData = "";
+
+            const Code = Result.statusCode;
+            const Type = Result.headers["content-type"];
 
             if (Code !== 200)
             {
@@ -26,12 +29,19 @@ exports.callAPI = function (Path, Callback)
             if (Error) { Result.resume(); Callback(Error); };
 
             Result.setEncoding("utf8");
-            Result.on("data", function (Buffer) { rawData += Buffer; });
+
+            Result.on("data", function (Buffer)
+            {
+                  rawData += Buffer;
+            });
 
             Result.on("end", () => {
                   let Data = null, Error = null;
 
-                  try { Data = JSON.parse(JSON.stringify(rawData)); } catch (unusedError) {
+                  try
+                  {
+                        Data = JSON.parse(JSON.stringify(rawData)); 
+                  } catch (unusedError) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
                         Error.code = "ERR_JSON_PARSE";
                   }; Callback(Error, Data);
@@ -44,12 +54,18 @@ exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
       this.callAPI(Endpoint, (Error, Result) => {
             if (Error)
             {
-                  if (typeof Callback === "function") Callback(Error);
+                  if (typeof Callback === "function")
+                  {
+                        Callback(Error);
+                  };
 
                   pReject(Error);
             };
 
-            if (typeof Callback === "function") { Callback(null, Result[0]); };
+            if (typeof Callback === "function")
+            {
+                  Callback(null, Result[0]);
+            };
 
             pResolve(JSON.parse(Result));
       });
