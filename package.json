@@ -28,6 +28,8 @@
     "url": "https://github.com/Jinzulen/TenorJS.git"
   },
   "dependencies": {
-    "moment": "^2.24.0"
+    "colors": "^1.3.3",
+    "moment": "^2.24.0",
+    "roi": "^0.18.0"
   }
 }
