@@ -1,0 +1,20 @@
+{
+  "name": "tenorjs",
+  "version": "1.0.0",
+  "description": "TenorJS is a lightweight NodeJS wrapper around the Tenor.com API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tenor",
+    "tenor.com",
+    "gif",
+    "discord",
+    "bots",
+    "wrapper",
+    "api"
+  ],
+  "author": "Jinzulen",
+  "license": "Apache-2.0"
+}
