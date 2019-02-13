@@ -7,10 +7,22 @@
 
 exports.client = function (Credentials)
 {
+      const Filters = ["off", "low", "medium", "high"];
+
       if (!Credentials.Key)
       {
             throw new Error ("Developer API key is missing.");
       };
 
-      return require("./src")(Credentials.Key);
+      if (!Credentials.Filter)
+      {
+            throw new Error ("Content filter level is not configured.");    
+      };
+      
+      if (!Filters.includes(Credentials.Filter.toLowerCase()))
+      {
+            throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
+      }
+
+      return require("./src")(Credentials);
 };
