@@ -3,7 +3,9 @@
  * @license Apache 2.0
  * TenorJS - Lightweight NodeJS wrapper around the Tenor.com API.
  */
+const roi = require("roi");
 const HTTPS = require("https");
+const Colors = require("colors");
 
 exports.callAPI = function (Path, Callback)
 {
@@ -90,4 +92,26 @@ exports.generateAnon = function (Endpoint)
 
             JSON.parse(Result).anon_id;
       });
+};
+
+/**
+ * Rudimentary version checking.
+ */
+exports.checkVersion = function ()
+{
+      const Package = {
+            "Git": "https://raw.githubusercontent.com/Jinzulen/TenorJS/master/package.json",
+            "Home": require("../package.json")["version"]
+      };
+
+      return roi.get(Package["Git"]).then(Response => {
+            let Version = JSON.parse(Response.body).version;
+            
+            if (Package["Home"] < Version)
+            {
+                  console.error(Colors.bold.red(`You are running an oudated version (v${Package["Home"]}) of TenorJS, v${Version} is available.\n
+# NPM: https://www.npmjs.com/package/tenorjs
+# GitHub: https://github.com/Jinzulen/TenorJS/`));
+            };
+      }).catch(console.error);
 };
