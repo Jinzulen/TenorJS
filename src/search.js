@@ -12,19 +12,10 @@ module.exports = function (Credentials, Utilities)
             Filter      = Credentials.Filter.toLowerCase(),
             MediaFilter = Credentials.MediaFilter;
 
-      Methods.random = function (Term, Limit, Callback)
+      Methods.random = Methods.query = function (Term, Limit, Callback)
       {
             return new Promise((Resolve, Reject) => {
                   const Endpoint = `https://api.tenor.com/v1/random?q=${Term}&key=${Key}&limit=${Limit}&contentfilter=${Filter}&locale=${Locale}&media_filter=${MediaFilter}`;
-
-                  Utilities.manageAPI(Endpoint, Callback, Resolve, Reject);
-            });
-      };
-
-      Methods.query = function (Term, Limit, Callback)
-      {
-            return new Promise((Resolve, Reject) => {
-                  const Endpoint = `https://api.tenor.com/v1/search?q=${Term}&key=${Key}&limit=${Limit}&contentfilter=${Filter}&locale=${Locale}&media_filter=${MediaFilter}`;
 
                   Utilities.manageAPI(Endpoint, Callback, Resolve, Reject);
             });
