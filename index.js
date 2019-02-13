@@ -26,7 +26,9 @@ exports.client = function (Credentials)
             {
                   throw new Error ("Media content filter has to be one of these options: basic, minimal.");
             };
-      } else if (!Credentials.MediaFilter) { Credentials.MediaFilter = "minimal"; };
+      } else if (!Credentials.MediaFilter) {
+            Credentials.MediaFilter = "minimal"; 
+      };
 
       return require("./src")(Credentials);
 };
