@@ -1,10 +1,8 @@
 /**
  * @author Jinzulen
  * @license Apache 2.0
- * 
  * TenorJS - Lightweight NodeJS wrapper around the Tenor.com API.
  */
-
 const HTTPS = require("https");
 
 exports.callAPI = function (Path, Callback)
@@ -12,11 +10,8 @@ exports.callAPI = function (Path, Callback)
       try
       {
             HTTPS.get(Path, (Result) => {
-                  let Error;
-                  let rawData = "";
-
-                  const Code = Result.statusCode;
-                  const Type = Result.headers["content-type"];
+                  let Error, rawData = "";
+                  const Code = Result.statusCode, Type = Result.headers["content-type"];
 
                   if (Code !== 200)
                   {
@@ -31,24 +26,17 @@ exports.callAPI = function (Path, Callback)
                   {
                         Result.resume();
                         Callback(Error);
-                        return;
                   };
 
                   Result.setEncoding("utf8");
-
-                  Result.on("data", function (Buffer) {
-                        rawData += Buffer;
-                  });
+                  Result.on("data", function (Buffer) { rawData += Buffer; });
 
                   Result.on("end", () => {
-                        let Data = null,
-                            Error = null;
+                        let Data = null, Error = null;
 
                         try
                         {
                               Data = JSON.parse(JSON.stringify(rawData));
-
-
                         } catch (unusedError) {
                               Error = "# [TenorJS] Failed to parse retrieved JSON.";
                               Error.code = "ERR_JSON_PARSE";
@@ -58,6 +46,22 @@ exports.callAPI = function (Path, Callback)
                   });
             });
       } catch (E) { throw E; };
+};
+
+exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
+{
+      this.callAPI(Endpoint, (Error, Result) => {
+            if (Error)
+            {
+                  if (typeof Callback === "function") { Callback(Error); };
+
+                  pReject(Error);
+            };
+
+            if (typeof Callback === "function") { Callback(null, Result[0]); };
+
+            pResolve(JSON.parse(Result));
+      });
 };
 
 /**
