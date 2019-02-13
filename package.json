@@ -4,7 +4,7 @@
   "description": "TenorJS is a lightweight NodeJS wrapper around the Tenor.com API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm install"
   },
   "keywords": [
     "tenor",
