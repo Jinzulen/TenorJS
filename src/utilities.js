@@ -11,10 +11,14 @@ exports.callAPI = function (Path, Callback)
             let Error, rawData = "";
             const Code = Result.statusCode, Type = Result.headers["content-type"];
 
-            if (Code !== 200) {
+            if (Code !== 200)
+            {
                   Error      = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
                   Error.code = "ERR_REQ_SEND";
-            } else if (Type.indexOf("application/json") === -1) {
+            }
+            
+            if (Type.indexOf("application/json") === -1)
+            {
                   Error      = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
                   Error.code = "ERR_RES_NOT";
             }
