@@ -9,6 +9,8 @@ exports.client = function (Credentials)
 {
       const Filters = ["off", "low", "medium", "high"];
 
+      const MediaFilters = ["basic", "minimal"];
+
       if (!Credentials.Key)
       {
             throw new Error ("Developer API key is missing.");
@@ -27,6 +29,16 @@ exports.client = function (Credentials)
       if (!Filters.includes(Credentials.Filter.toLowerCase()))
       {
             throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
+      };
+
+      if (Credentials.MediaFilter)
+      {
+            if (!MediaFilters.includes(Credentials.MediaFilter.toLowerCase()))
+            {
+                  throw new Error ("Media content filter has to be one of these options: basic, minimal.");
+            };
+      } else if (!Credentials.MediaFilter) {
+            Credentials.MediaFilter = "minimal";
       };
 
       return require("./src")(Credentials);
