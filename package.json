@@ -1,6 +1,6 @@
 {
   "name": "tenorjs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "TenorJS is a lightweight NodeJS wrapper around the Tenor.com API.",
   "main": "index.js",
   "scripts": {
