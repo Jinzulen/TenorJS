@@ -20,10 +20,8 @@ exports.client = function (Credentials)
             throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
       };
 
-      if (Credentials.MediaFilter)
-      {
-            if (!MediaFilters.includes(Credentials.MediaFilter.toLowerCase()))
-            {
+      if (Credentials.MediaFilter) {
+            if (!MediaFilters.includes(Credentials.MediaFilter.toLowerCase())) {
                   throw new Error ("Media content filter has to be one of these options: basic, minimal.");
             };
       } else if (!Credentials.MediaFilter) {
