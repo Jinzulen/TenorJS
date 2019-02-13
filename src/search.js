@@ -71,6 +71,33 @@ module.exports = function (Credentials, Utilities)
             });
       };
 
+      Methods.trending_terms = function (Limit, Callback)
+      {
+            return new Promise((Resolve, Reject) => {
+                  const Endpoint = `https://api.tenor.com/v1/trending_terms?key=${Key}`;
+
+                  Utilities.callAPI(Endpoint, (Error, Result) => {
+                        if(Error)
+                        {
+                              if (typeof Callback === "function")
+                              {
+                                    Callback(Error);
+                              };
+      
+                              Reject(Error);
+                              return;
+                        };
+      
+                        if (typeof Callback === "function")
+                        {
+                              Callback(null, Result[0]);
+                        };
+      
+                        Resolve(JSON.parse(Result));
+                  });
+            });
+      };
+
       Methods.categories = function (Callback)
       {
             return new Promise((Resolve, Reject) => {
