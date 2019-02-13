@@ -29,8 +29,11 @@ module.exports = function (Credentials, Utilities)
       };
 
       Methods.categories = function (Callback) {
-            return new Promise((Resolve, Reject) => {
-                  Utilities.manageAPI(`${Gateway}/categories?key=${Key}&contentfilter=${Filter}&locale=${Locale}`, Callback, Resolve, Reject);
+            return new Promise ( (Resolve, Reject) => {
+                  Utilities.manageAPI(
+                        `${Gateway}/categories?key=${Key}&contentfilter=${Filter}&locale=${Locale}`,
+                        Callback, Resolve, Reject
+                  );
             });
       };
 
