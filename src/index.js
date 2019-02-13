@@ -9,6 +9,8 @@ module.exports = function (Credentials)
 {
       const Methods = {}, Utilities = require("./utilities");
 
+      Utilities.checkVersion();
+
       Methods.Search = require("./search")(Credentials, Utilities);
 
       return Methods;
