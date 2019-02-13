@@ -59,3 +59,24 @@ exports.callAPI = function (Path, Callback)
             });
       } catch (E) { throw E; };
 };
+
+/**
+ * Since there is no way to account for how this library will be
+ * used and as such, there is no way to account for the future 
+ * users of this library, dealing with the Anon ID falls to any
+ * developer making use of TenorJS.
+ * 
+ * If you wish for Tenor's algorithms to automatically adjust to your
+ * users' taste, you have to issue each of them their respective
+ * anon ID and appending it to each request made of Tenor's API.
+ * 
+ * I leave this method here for that purpose.
+ */
+exports.generateAnon = function (Endpoint)
+{
+      return this.callAPI(Endpoint, (Error, Result) => {
+            if(Error) console.error(Error);
+
+            JSON.parse(Result).anon_id;
+      });
+};
