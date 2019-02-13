@@ -1,5 +1,5 @@
 # TenorJS
-![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json)
+![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/?branch=master)
 
 [![https://nodei.co/npm/tenorjs.png](https://nodei.co/npm/tenorjs.png)](https://www.npmjs.com/package/tenorjs)
 
@@ -21,7 +21,7 @@ Attribution logos are provided by Tenor can be found in this [Dropbox folder](ht
 Alright, now that that's out of the way, let's take a look at some code.
 
 - Call TenorJS
-1. First thing we need to do is call TenorJS and initialize it by passing it the necessary configuration parameters, which in this case is, the Tenor developer API key. You can get the key by signing up for a **free** developer account [here](https://tenor.com/developer/keyregistration).
+1. First thing we need to do is call TenorJS and initialize it by passing it the necessary configuration parameters, which in this case is, the Tenor developer API key and the necessary filters and locale configuration. You can get the developer API key by signing up for a **free** developer account [here](https://tenor.com/developer/keyregistration).
 
 2. Tenor offers a content filter in its API as well, the content filter takes one of these four values: **off**, **low**, **medium**, **high**. - You can manually configure its level when initializing the library, as demonstrated below.
 
