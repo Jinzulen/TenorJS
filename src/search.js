@@ -23,13 +23,13 @@ module.exports = function (Credentials, Utilities)
       };
 
       Methods.trending_terms = function (Callback) {
-            return new Promise((Resolve, Reject) => {
+            return new Promise ((Resolve, Reject) => {
                   Utilities.manageAPI(`${Gateway}/trending_terms?key=${Key}`, Callback, Resolve, Reject);
             });
       };
 
       Methods.categories = function (Callback) {
-            return new Promise ( (Resolve, Reject) => {
+            return new Promise( (Resolve, Reject) => {
                   Utilities.manageAPI(
                         `${Gateway}/categories?key=${Key}&contentfilter=${Filter}&locale=${Locale}`,
                         Callback, Resolve, Reject
@@ -38,8 +38,11 @@ module.exports = function (Credentials, Utilities)
       };
 
       Methods.category = function (Category, Limit, Callback) {
-            return new Promise((Resolve, Reject) => {
-                  Utilities.manageAPI(`${Gateway}/search?tag=${Category}&limit=${Limit}&key=${Key}&contentfilter=${Filter}&locale=${Locale}`, Callback, Resolve, Reject);
+            return new Promise ( (Resolve, Reject) => {
+                  Utilities.manageAPI(
+                        `${Gateway}/search?tag=${Category}&limit=${Limit}&key=${Key}&contentfilter=${Filter}&locale=${Locale}`,
+                        Callback, Resolve, Reject
+                  );
             });
       };
 
