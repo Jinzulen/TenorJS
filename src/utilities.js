@@ -38,8 +38,15 @@ exports.callAPI = function (Path, Callback)
 exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
 {
       this.callAPI(Endpoint, (Error, Result) => {
-            if (Error) { if (typeof Callback === "function") { Callback(Error); }; pReject(Error); };
+            if (Error)
+            {
+                  if (typeof Callback === "function") Callback(Error);
+
+                  pReject(Error);
+            };
+
             if (typeof Callback === "function") { Callback(null, Result[0]); };
+
             pResolve(JSON.parse(Result));
       });
 };
