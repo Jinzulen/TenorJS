@@ -28,14 +28,13 @@ exports.callAPI = function (Path, Callback)
             Result.on("end", () => {
                   let Data = null, Error = null;
 
-                  try
-                  {
+                  try {
                         Data = JSON.parse(JSON.stringify(rawData));
                   } catch (unusedError) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
                         Error.code = "ERR_JSON_PARSE";
                   };
-
+                  
                   Callback(Error, Data);
             });
       });
