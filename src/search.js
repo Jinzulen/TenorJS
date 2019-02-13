@@ -98,5 +98,32 @@ module.exports = function (Credentials, Utilities)
             });
       };
 
+      Methods.category = function (Category, Limit, Callback)
+      {
+            return new Promise((Resolve, Reject) => {
+                  const Endpoint = `https://api.tenor.com/v1/search?tag=${Category}&limit=${Limit}&key=${Key}&contentfilter=${Filter}&locale=${Locale}`;
+
+                  Utilities.callAPI(Endpoint, (Error, Result) => {
+                        if(Error)
+                        {
+                              if (typeof Callback === "function")
+                              {
+                                    Callback(Error);
+                              };
+      
+                              Reject(Error);
+                              return;
+                        };
+      
+                        if (typeof Callback === "function")
+                        {
+                              Callback(null, Result[0]);
+                        };
+      
+                        Resolve(JSON.parse(Result));
+                  });
+            });
+      };
+
       return Methods;
 };
