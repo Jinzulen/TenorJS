@@ -18,13 +18,13 @@ exports.callAPI = function (Path, Callback)
             {
                   Error      = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
                   Error.code = "ERR_REQ_SEND";
-            }
+            };
             
             if (Type.indexOf("application/json") === -1)
             {
                   Error      = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
                   Error.code = "ERR_RES_NOT";
-            }
+            };
 
             if (Error) { Result.resume(); Callback(Error); };
 
