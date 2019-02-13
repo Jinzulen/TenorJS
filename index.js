@@ -14,6 +14,11 @@ exports.client = function (Credentials)
             throw new Error ("Developer API key is missing.");
       };
 
+      if (!Credentials.Locale)
+      {
+            throw new Error ("Content locale is not configured.");
+      };
+
       if (!Credentials.Filter)
       {
             throw new Error ("Content filter level is not configured.");    
@@ -22,7 +27,7 @@ exports.client = function (Credentials)
       if (!Filters.includes(Credentials.Filter.toLowerCase()))
       {
             throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
-      }
+      };
 
       return require("./src")(Credentials);
 };
