@@ -144,7 +144,9 @@ Tenor.Search.random("anime", "3").then(GIF => {
 - Jin (Holler at me on Discord @ Jin#8303). [@NPM](https://www.npmjs.com/~jinzulen)
 
 ### 5. Dependencies
+- [roi](https://www.npmjs.com/package/roi)
 - [moment](https://www.npmjs.com/package/moment) - Recommended for formatting unix timestamps.
+- [colors](https://www.npmjs.com/package/colors)
 
 ### 6. Developer's Notes
 - This library is the product of sheer boredom and curiosity, it is released as-is without any guarantees of any kind on my part. I am not responsible for what anyone does with it.
