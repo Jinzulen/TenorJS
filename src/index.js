@@ -7,8 +7,7 @@
 
 module.exports = function (Credentials)
 {
-      const Methods = {};
-      const Utilities = require("./utilities");
+      const Methods = {}, Utilities = require("./utilities");
 
       Methods.Search = require("./search")(Credentials, Utilities);
 
