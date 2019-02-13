@@ -62,13 +62,13 @@ exports.callAPI = function (Path, Callback)
 
 /**
  * Since there is no way to account for how this library will be
- * used and as such, there is no way to account for the future 
+ * used, and as such, there is no way to account for the future 
  * users of this library, dealing with the Anon ID falls to any
  * developer making use of TenorJS.
  * 
  * If you wish for Tenor's algorithms to automatically adjust to your
  * users' taste, you have to issue each of them their respective
- * anon ID and appending it to each request made of Tenor's API.
+ * anon ID and append it to each request made of Tenor's API.
  * 
  * I leave this method here for that purpose.
  */

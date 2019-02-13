@@ -1,4 +1,5 @@
 # TenorJS
+[![https://nodei.co/npm/tenorjs.png](https://nodei.co/npm/tenorjs.png)](https://www.npmjs.com/package/tenorjs)
 TenorJS is a basic NodeJS wrapper around the [Tenor](https://tenor.com/) API.
 This is an unofficial third-party product that isn't in any way affiliated or sponsored by Tenor.
 
