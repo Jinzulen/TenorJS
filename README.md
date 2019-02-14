@@ -7,6 +7,8 @@ TenorJS is a basic NodeJS wrapper around the [Tenor](https://tenor.com/) API.
 
 This is an unofficial third-party product that isn't in any way affiliated or sponsored by Tenor.
 
+**UPDATE:** v1.0.5 is now out! See what's new via [this changelog](https://github.com/Jinzulen/TenorJS/tree/master/changelogs/1.0.5.md)!
+
 ### 1. Installation
 TenorJS can be easily installed via NPM: `npm i tenorjs` **--** Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
 
