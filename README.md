@@ -20,7 +20,7 @@ Attribution logos are provided by Tenor can be found in this [Dropbox folder](ht
 
 Alright, now that that's out of the way, let's take a look at some code.
 
-- Call TenorJS
+- **Call TenorJS**
 1. First thing we need to do is call TenorJS and initialize it by passing it the necessary configuration parameters, which in this case is, the Tenor developer API key and the necessary filters and locale configuration. You can get the developer API key by signing up for a **free** developer account [here](https://tenor.com/developer/keyregistration).
 
 2. Tenor offers a content filter in its API as well, the content filter takes one of these four values: **off**, **low**, **medium**, **high**. - You can manually configure its level when initializing the library, as demonstrated below.
@@ -37,6 +37,7 @@ const Tenor = require("tenorjs").client({
 });
 ```
 
+#### 2.1 Trending:
 - **Fetching trending GIFs:**
 ```js
 // Tenor.Search.trending("LIMIT HERE")
@@ -64,6 +65,7 @@ Tenor.Search.trending_terms().then(Terms => {
 // snowmageddon, sweet dreams, happy valentines day, bedtime, love my wife, yes, happy birthday mr president, cant sleep, valentines day, love you, valentine, insomnia, apex, excited, be my valentine, bed time, zion, love, utah jazz, go to sleep
 ```
 
+#### 2.2.a Search:
 - **Fetching a GIF using a specific search query:**
 > The JSON output won't always contain a title for the provided media, so in this example I included a quick little check to determine whether `title` is null and when it is, pushed "Untitled" in its stead. In the future, I'll perhaps include native checks for this.
 ```js
@@ -120,6 +122,26 @@ Tenor.Search.category("scared", "3").then(GIF => {
 // Item [Scared Spongebob] #7675159 (Created: 31/01/2017 - 3:21:18 PM) @ https://tenor.com/GmO3.gif.
 ```
 
+#### 2.2.b Autocomplete & Search Suggestions
+- **Autocompleting the user's input:**
+```js
+// Tenor.Suggest.autocomplete("SEARCH TERM")
+Tenor.Suggest.autocomplete("anim").then(Result => {
+      console.log(Result);
+}).catch(console.error);
+// { results: [ 'animals', 'anime' ] }
+```
+
+- **Search suggestions:**
+```js
+// Tenor.Suggest.suggestions("SEARCH TERM", "LIMIT HERE")
+Tenor.Suggest.suggestions("anime", "3").then(Result => {
+      console.log(Result);
+}).catch(console.error);
+// { results: [ 'anime kiss', 'anime love', 'anime hug' ] }
+```
+
+#### 2.3 Random GIF:
 - **Fetching random GIFs:**
 ```js
 Tenor.Search.random("anime", "3").then(GIF => {
@@ -155,4 +177,3 @@ Tenor.Search.random("anime", "3").then(GIF => {
 1. Caching.
 2. Proper error handling.
 3. Native date formatting.
-4. Remove redundant code from search.
