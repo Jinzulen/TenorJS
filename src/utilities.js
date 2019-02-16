@@ -48,8 +48,6 @@ exports.callAPI = function (Path, Callback)
                   }
                   
                   let Data = dForm;
-
-                  console.log(Data.created);
       
                   for (var i in Data)
                   {
