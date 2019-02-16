@@ -39,7 +39,13 @@ exports.client = function (Credentials)
 
       Credentials.Gate   = "https://api.tenor.com/v1";
       Credentials.Filter = Credentials.Filter.toLowerCase();
-            
+
+      /**
+       * Should probably move this elsewhere in the future, not a good
+       * idea having this much code and heavy-lifting in one place.
+       */
+      let Creds = JSON.stringify(Credentials);
+      
       function writeConfig()
       {
             FS.writeFileSync("tenor_config.json", Creds, function (Error) {
@@ -48,15 +54,9 @@ exports.client = function (Credentials)
                   process.exit(1);
             });
       }
-
-      /**
-       * Should probably move this elsewhere in the future, not a good
-       * idea having this much code and heavy-lifting in one place.
-       */
+      
       try
       {
-            let Creds = JSON.stringify(Credentials);
-
             if (!FS.existsSync("tenor_config.json"))
             {
                   writeConfig();
