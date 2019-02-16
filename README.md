@@ -10,7 +10,7 @@ TenorJS is a basic NodeJS wrapper around the [Tenor](https://tenor.com/) API.
 
 This is an unofficial third-party product that isn't in any way affiliated or sponsored by Tenor.
 
-**UPDATE:** v1.0.5 is now out! See what's new via [this changelog](https://github.com/Jinzulen/TenorJS/tree/master/changelogs/1.0.5.md)!
+**UPDATE:** v1.0.6 is now out! See what's new via [this changelog](https://github.com/Jinzulen/TenorJS/tree/master/changelogs/1.0.6.md)!
 
 ### 1. Installation
 TenorJS can be easily installed via NPM: `npm i tenorjs` **--** Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
@@ -71,7 +71,21 @@ Tenor.Search.trending_terms().then(Terms => {
 ```
 
 #### 2.2.a Search:
-- **Fetching a GIF using a specific search query:**
+- **Fetching GIF(s) using specific ID(s):**
+> Notice #1: This function takes up to 50 IDs max.
+> Notice #2: The IDs object always has to be an array. So `GIF(["ID"])` not `GIF("ID")`.
+```js
+Tenor.Search.GIFs(["9411482", "5152678", "12175525"]).then(GIF => {
+	GIF.forEach(Post => {
+            console.log(`Item #${Post.id} @ ${Post.url}`);
+      });
+}).catch(console.error);
+// Item #9411482 @ https://tenor.com/NEwg.gif
+// Item #5152678 @ https://tenor.com/vMBS.gif
+// Item #12175525 @ https://tenor.com/ZfzB.gif
+```
+
+- **Fetching a GIF using a specific keyword:**
 > The JSON output won't always contain a title for the provided media, so in this example I included a quick little check to determine whether `title` is null and when it is, pushed "Untitled" in its stead. In the future, I'll perhaps include native checks for this.
 ```js
 // Tenor.search.query("SEARCH TERM HERE", "LIMIT HERE")
