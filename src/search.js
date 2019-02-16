@@ -16,6 +16,21 @@ module.exports = function (Credentials, Utilities)
             });
       };
 
+      Methods.GIFs = function (Choices, Callback) {
+            /**
+             * Choices object has to be an array.
+             */
+            if (!Array.isArray(Choices)) throw new Error("ID set has to be an array.");
+
+            IDs = Choices;
+            if (Choices.length > 1) IDs = Choices.join(",");
+            if (Choices.length > 50) throw new Error ("You can not use more than 50 individual IDs for this operation.");
+
+            return new Promise((Resolve, Reject) => {
+                  Utilities.manageAPI(`${Gateway}/gifs?key=${Key}&ids=${IDs}`, Callback, Resolve, Reject);
+            });
+      };
+
       Methods.trending = function (Limit, Callback) {
             return new Promise((Resolve, Reject) => {
                   Utilities.manageAPI(`${Gateway}/trending?key=${Key}&limit=${Limit}&contentfilter=${Filter}&locale=${Locale}&media_filter=${MediaFilter}`, Callback, Resolve, Reject);
