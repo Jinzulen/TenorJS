@@ -8,6 +8,8 @@ const roi    = require("roi"),
       Colors = require("colors"),
       Moment = require("moment");
 
+const { DateFormat } = require("../tenor_config.json");
+
 exports.callAPI = function (Path, Callback)
 {
       HTTPS.get(Path, (Result) => {
@@ -35,14 +37,30 @@ exports.callAPI = function (Path, Callback)
 
             Result.on("data", function (Buffer)
             {
-                  let Data = JSON.parse(Buffer).results;
+                  /**
+                   * Path checks.
+                   */
+                  if (Path.includes("categories"))
+                  {
+                        dForm = JSON.parse(Buffer).tags;
+                  } else {
+                        dForm = JSON.parse(Buffer).results;
+                  }
+                  
+                  let Data = dForm;
+
+                  console.log(Data.created);
       
                   for (var i in Data)
                   {
                         if (!Data[i].title) Data[i].title = "Untitled";
       
-                        Data[i].created_stamp = Data[i].created;
-                        Data[i].created = Moment.unix(Data[i].created).format("D/MM/YYYY - h:mm:ss A");
+                        if (!Path.includes("categories"))
+                        {
+                              Data[i].created_stamp = Data[i].created;
+                              Data[i].created = Moment.unix(Data[i].created).format(DateFormat);
+                  
+                        }
                   }
 
                   rawData += JSON.stringify(Data);
