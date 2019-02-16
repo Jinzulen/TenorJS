@@ -7,7 +7,8 @@
 module.exports = function (Credentials, Utilities, Callback)
 {
       return new Promise((Resolve, Reject) => {
-            Utilities.manageAPI(`${Credentials.Gate}/trending_terms?key=${Credentials.Key}`,
-                  Callback, Resolve, Reject);
+            let Gateway = `${Credentials.Gate}/trending_terms?key=${Credentials.Key}`;
+
+            Utilities.manageAPI(Gateway, Callback, Resolve, Reject);
       });
 };
