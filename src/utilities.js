@@ -3,9 +3,10 @@
  * @license Apache 2.0
  * TenorJS - Lightweight NodeJS wrapper around the Tenor.com API.
  */
-const roi = require("roi");
-const HTTPS = require("https");
-const Colors = require("colors");
+const roi    = require("roi"),
+      HTTPS  = require("https"),
+      Colors = require("colors"),
+      Moment = require("moment");
 
 exports.callAPI = function (Path, Callback)
 {
@@ -28,13 +29,23 @@ exports.callAPI = function (Path, Callback)
                   Error.code = "ERR_RES_NOT";
             }
 
-            if (Error) Result.resume(); Callback(Error);
+            if (Error) { Result.resume(); Callback(Error); }
 
             Result.setEncoding("utf8");
 
             Result.on("data", function (Buffer)
             {
-                  rawData += Buffer;
+                  let Data = JSON.parse(Buffer).results;
+      
+                  for (var i in Data)
+                  {
+                        if (!Data[i].title) Data[i].title = "Untitled";
+      
+                        Data[i].created_stamp = Data[i].created;
+                        Data[i].created = Moment.unix(Data[i].created).format("D/MM/YYYY - h:mm:ss A");
+                  }
+
+                  rawData += JSON.stringify(Data);
             });
 
             Result.on("end", () => {
@@ -46,7 +57,9 @@ exports.callAPI = function (Path, Callback)
                   } catch (unusedError) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
                         Error.code = "ERR_JSON_PARSE";
-                  } Callback(Error, Data);
+                  }
+                  
+                  Callback(Error, Data);
             });
       });
 };
@@ -56,22 +69,17 @@ exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
       this.callAPI(Endpoint, (Error, Result) => {
             if (Error)
             {
-                  if (typeof Callback === "function")
-                  {
-                        Callback(Error);
-                  };
+                  if (typeof Callback === "function") Callback(Error);
 
                   pReject(Error);
             }
 
-            if (typeof Callback === "function")
-            {
-                  Callback(null, Result[0]);
-            }
+            if (typeof Callback === "function") Callback(null, Result[0]);
 
             pResolve(JSON.parse(Result));
       });
 };
+
 
 /**
  * Since there is no way to account for how this library will be
@@ -111,7 +119,10 @@ exports.checkVersion = function ()
             {
                   console.error(Colors.bold.red(`You are running an oudated version (v${Package["Home"]}) of TenorJS, v${Version} is available.\n
 # NPM: https://www.npmjs.com/package/tenorjs
-# GitHub: https://github.com/Jinzulen/TenorJS/`));
+# GitHub: https://github.com/Jinzulen/TenorJS/
+# Why you should upgrade: https://github.com/Jinzulen/TenorJS/blob/master/changelogs/${Version}.md`));
+
+                  process.exit(1);
             }
       }).catch(console.error);
 };
