@@ -6,7 +6,7 @@
 
 module.exports = function (Credentials)
 {
-      const Methods = {}, Utilities = require("./utilities");
+      const Methods = {}, Utilities = require("./Tools/Utilities");
 
       /**
        * Check if the user is running an outdated version of TenorJS.
@@ -16,17 +16,22 @@ module.exports = function (Credentials)
       /**
        * Methods related to search querying.
        */
-      Methods.Search = require("./search")(Credentials, Utilities);
+      Methods.Search = require("./Search")(Credentials, Utilities);
+
+      /**
+       * Functions related to search autocompleting and suggestions.
+       */
+      Methods.Suggest = require("./Suggest")(Credentials, Utilities);
 
       /**
        * Methods related to trending content.
        */
-      Methods.Trending = require("./trending")(Credentials, Utilities);
+      Methods.Trending = require("./Trending")(Credentials, Utilities);
 
       /**
-       * Functions related to search term autocompleting and suggestions.
+       * Methods related to categories and tags.
        */
-      Methods.Suggest = require("./suggest")(Credentials, Utilities);
+      Methods.Categories = require("./Categories")(Credentials, Utilities);
 
       return Methods;
 };
