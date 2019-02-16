@@ -4,13 +4,17 @@
  * 
  * TenorJS - Lightweight NodeJS wrapper around the Tenor.com API.
  */
+const FS     = require("fs"),
+      Colors = require("colors");
 
 exports.client = function (Credentials)
 {
       const Filters      = ["off", "low", "medium", "high"],
             MediaFilters = ["basic", "minimal"];
 
-
+      /**
+       * Credentials checks.
+       */
       if (!Credentials.Key || !Credentials.Locale || !Credentials.Filter)
       {
             throw new Error ("Client configuration is not complete; please ensure all configuration parameters are satisfied (Key, Locale, Filter).");
@@ -21,11 +25,6 @@ exports.client = function (Credentials)
             throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
       }
 
-      if (!Credentials.DateFormat)
-      {
-            Credentials.DateFormat = "D/MM/YYYY - H:mm:ss A";
-      }
-
       if (Credentials.MediaFilter)
       {
             if (!MediaFilters.includes(Credentials.MediaFilter.toLowerCase()))
@@ -34,6 +33,40 @@ exports.client = function (Credentials)
             }
       } else if (!Credentials.MediaFilter) {
             Credentials.MediaFilter = "minimal"; 
+      }
+
+      if (!Credentials.DateFormat) Credentials.DateFormat = "D/MM/YYYY - H:mm:ss A";
+
+      /**
+       * Should probably move this elsewhere in the future, not a good
+       * idea having this much code and heavy-lifting in one place.
+       */
+      function writeConfig(Content)
+      {
+            FS.writeFile("tenor_config.json", Content, function (Error) {
+                  if (Error) throw Error;
+
+                  console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Process should be restarted.`));
+
+                  process.exit(1);
+            });
+      }
+
+      try
+      {
+            let Creds = JSON.stringify(Credentials);
+
+            if (!FS.existsSync("tenor_config.json"))
+            {
+                  writeConfig(Creds);
+            } else {
+                  FS.readFile("tenor_config.json", "utf8", function (Error, Data) {
+                        if (Error) throw Error;
+                        if (Data !== Creds) writeConfig(Creds);
+                  });
+            }
+      } catch (E) {
+            throw E;
       }
 
       return require("./src")(Credentials);
