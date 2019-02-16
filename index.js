@@ -37,6 +37,9 @@ exports.client = function (Credentials)
 
       if (!Credentials.DateFormat) Credentials.DateFormat = "D/MM/YYYY - H:mm:ss A";
 
+      Credentials.Gate   = "https://api.tenor.com/v1";
+      Credentials.Filter = Credentials.Filter.toLowerCase();
+
       /**
        * Should probably move this elsewhere in the future, not a good
        * idea having this much code and heavy-lifting in one place.
