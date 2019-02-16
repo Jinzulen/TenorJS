@@ -1,6 +1,9 @@
 # TenorJS
 ![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/?branch=master)
 
+[//]: # (Must not forget to change the branch when v1.0.6 goes live on master)
+[![CodeFactor](https://www.codefactor.io/repository/github/jinzulen/tenorjs/badge/development)](https://www.codefactor.io/repository/github/jinzulen/tenorjs/overview/development) ![NPM Weekly Downloads](https://img.shields.io/npm/dw/tenorjs.svg) ![Status of dependencies](https://img.shields.io/david/jinzulen/tenorjs.svg)
+
 [![https://nodei.co/npm/tenorjs.png](https://nodei.co/npm/tenorjs.png)](https://www.npmjs.com/package/tenorjs)
 
 TenorJS is a basic NodeJS wrapper around the [Tenor](https://tenor.com/) API.
