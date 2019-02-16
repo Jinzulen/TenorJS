@@ -74,7 +74,7 @@ Tenor.Search.trending_terms().then(Terms => {
 - **Fetching GIF(s) using specific ID(s):**
 > Notice #1: This function takes up to 50 IDs max.
 
-> Notice #2: The IDs object always has to be an array. So `GIF(["ID"])` not `GIF("ID")`.
+> Notice #2: The IDs object always has to be an array. So `GIFs(["ID"])` not `GIFs("ID")`.
 ```js
 Tenor.Search.GIFs(["9411482", "5152678", "12175525"]).then(GIF => {
 	GIF.forEach(Post => {
