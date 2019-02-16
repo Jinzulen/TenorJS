@@ -10,6 +10,7 @@ exports.client = function (Credentials)
       const Filters      = ["off", "low", "medium", "high"],
             MediaFilters = ["basic", "minimal"];
 
+
       if (!Credentials.Key || !Credentials.Locale || !Credentials.Filter)
       {
             throw new Error ("Client configuration is not complete; please ensure all configuration parameters are satisfied (Key, Locale, Filter).");
@@ -20,9 +21,9 @@ exports.client = function (Credentials)
             throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
       }
 
-      if (!Credentials.DateFilter)
+      if (!Credentials.DateFormat)
       {
-            Credentials.DateFilter = "D/MM/YYYY - H:mm:ss A";
+            Credentials.DateFormat = "D/MM/YYYY - H:mm:ss A";
       }
 
       if (Credentials.MediaFilter)
