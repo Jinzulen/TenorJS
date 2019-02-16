@@ -34,7 +34,7 @@ Alright, now that that's out of the way, let's take a look at some code.
 
 4. Tenor also offers developers a way to minimize the number of media types/formats returned with each API response via their media content filter. You can configure the library to use either the `basic` (nanomp4, tinygif, tinymp4, gif, mp4, and nanogif) or `minimal` (tinygif, gif, and mp4) media content filters when initializing the client. Keep in mind that if you don't configure it, the library is set to use the minimal filter by default.
 
-5. In order to alleviate some pressure off of developers and ensure not to inconvenience them by adding one more task to their schedule, native date formatting has been implemented into TenorJS as of v1.0.6! To aid developers further with matters concerning localization, TenorJS allows them to set custom date formats, however, if they don't; TenorJS will by default use the date format shown in the example below.
+5. In order to alleviate some pressure off of developers and ensure not to inconvenience them by adding one more task to their schedule, native [date formatting has been implemented into TenorJS as of v1.0.6](https://github.com/Jinzulen/TenorJS/blob/master/changelogs/1.0.6.md)! To aid developers further with matters concerning localization, TenorJS allows them to set custom date formats, however, if they don't; TenorJS will by default use the date format shown in the example below.
 ```js
 const Tenor = require("tenorjs").client({
     "Key": "YOUR DEVELOPER KEY HERE", // https://tenor.com/developer/keyregistration
