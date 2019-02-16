@@ -20,15 +20,15 @@ exports.callAPI = function (Path, Callback)
             {
                   Error      = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
                   Error.code = "ERR_REQ_SEND";
-            };
+            }
             
             if (Type.indexOf("application/json") === -1)
             {
                   Error      = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
                   Error.code = "ERR_RES_NOT";
-            };
+            }
 
-            if (Error) { Result.resume(); Callback(Error); };
+            if (Error) Result.resume(); Callback(Error);
 
             Result.setEncoding("utf8");
 
@@ -46,7 +46,7 @@ exports.callAPI = function (Path, Callback)
                   } catch (unusedError) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
                         Error.code = "ERR_JSON_PARSE";
-                  }; Callback(Error, Data);
+                  } Callback(Error, Data);
             });
       });
 };
@@ -62,12 +62,12 @@ exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
                   };
 
                   pReject(Error);
-            };
+            }
 
             if (typeof Callback === "function")
             {
                   Callback(null, Result[0]);
-            };
+            }
 
             pResolve(JSON.parse(Result));
       });
@@ -112,6 +112,6 @@ exports.checkVersion = function ()
                   console.error(Colors.bold.red(`You are running an oudated version (v${Package["Home"]}) of TenorJS, v${Version} is available.\n
 # NPM: https://www.npmjs.com/package/tenorjs
 # GitHub: https://github.com/Jinzulen/TenorJS/`));
-            };
+            }
       }).catch(console.error);
 };
