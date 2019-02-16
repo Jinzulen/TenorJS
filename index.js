@@ -39,6 +39,15 @@ exports.client = function (Credentials)
 
       Credentials.Gate   = "https://api.tenor.com/v1";
       Credentials.Filter = Credentials.Filter.toLowerCase();
+            
+      function writeConfig()
+      {
+            FS.writeFileSync("tenor_config.json", Creds, function (Error) {
+                  if (Error) throw Error;
+                  console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Process should be restarted.`));
+                  process.exit(1);
+            });
+      }
 
       /**
        * Should probably move this elsewhere in the future, not a good
@@ -55,15 +64,6 @@ exports.client = function (Credentials)
                   FS.readFile("tenor_config.json", "utf8", function (Error, Data) {
                         if (Error) throw Error;
                         if (Data !== Creds) writeConfig();
-                  });
-            }
-            
-            function writeConfig()
-            {
-                  FS.writeFileSync("tenor_config.json", Creds, function (Error) {
-                        if (Error) throw Error;
-                        console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Process should be restarted.`));
-                        process.exit(1);
                   });
             }
       } catch (E) {
