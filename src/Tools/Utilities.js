@@ -8,7 +8,7 @@ const roi    = require("roi"),
       Colors = require("colors"),
       Moment = require("moment");
 
-const { DateFormat } = require("../tenor_config.json");
+const { DateFormat } = require("../../tenor_config.json");
 
 exports.callAPI = function (Path, Callback)
 {
@@ -125,7 +125,7 @@ exports.checkVersion = function ()
 {
       const Package = {
             "Git": "https://raw.githubusercontent.com/Jinzulen/TenorJS/master/package.json",
-            "Home": require("../package.json")["version"]
+            "Home": require("../../package.json")["version"]
       };
 
       return roi.get(Package["Git"]).then(Response => {
