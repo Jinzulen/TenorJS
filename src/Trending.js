@@ -10,13 +10,13 @@ module.exports = function (Credentials, Utilities)
 	
 	Methods.GIFs = function (Limit, Callback)
 	{
-		return require("./Methods/Trending/GIFs.js")(Credentials,
+		return require("./Methods/Trending/GIFs")(Credentials,
 			Utilities, Limit, Callback);
 	};
 
 	Methods.Terms = function (Callback)
 	{
-		return require("./Methods/Trending/Terms.js")(Credentials,
+		return require("./Methods/Trending/Terms")(Credentials,
 			Utilities, Callback);
 	};
 
