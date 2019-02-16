@@ -41,28 +41,26 @@ exports.client = function (Credentials)
        * Should probably move this elsewhere in the future, not a good
        * idea having this much code and heavy-lifting in one place.
        */
-      function writeConfig(Content)
-      {
-            FS.writeFile("tenor_config.json", Content, function (Error) {
-                  if (Error) throw Error;
-
-                  console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Process should be restarted.`));
-
-                  process.exit(1);
-            });
-      }
-
       try
       {
             let Creds = JSON.stringify(Credentials);
 
             if (!FS.existsSync("tenor_config.json"))
             {
-                  writeConfig(Creds);
+                  writeConfig();
             } else {
                   FS.readFile("tenor_config.json", "utf8", function (Error, Data) {
                         if (Error) throw Error;
-                        if (Data !== Creds) writeConfig(Creds);
+                        if (Data !== Creds) writeConfig();
+                  });
+            }
+            
+            function writeConfig()
+            {
+                  FS.writeFileSync("tenor_config.json", Creds, function (Error) {
+                        if (Error) throw Error;
+                        console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Process should be restarted.`));
+                        process.exit(1);
                   });
             }
       } catch (E) {
