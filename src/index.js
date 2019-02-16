@@ -19,6 +19,11 @@ module.exports = function (Credentials)
       Methods.Search = require("./search")(Credentials, Utilities);
 
       /**
+       * Methods related to trending content.
+       */
+      Methods.Trending = require("./trending")(Credentials, Utilities);
+
+      /**
        * Functions related to search term autocompleting and suggestions.
        */
       Methods.Suggest = require("./suggest")(Credentials, Utilities);
