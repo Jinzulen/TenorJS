@@ -64,9 +64,9 @@ Tenor.Trending.Terms().then(Results => {
       // Will return an array but for the sake
       // of the example, I joined the results
       // with a comma.
-      console.log(Results);
+      console.log(Results.join(", "));
 }).catch(console.error);
-// snowmageddon, sweet dreams, happy valentines day, bedtime, love my wife, yes, happy birthday mr president, cant sleep, valentines day, love you, valentine, insomnia, apex, excited, be my valentine, bed time, zion, love, utah jazz, go to sleep
+// happy birthday boyfriend, tuesday, karl lagerfeld, lunch, happy birthday girlfriend, yes, waiting for an answer, good afternoon, love ya too, love you, bernie sanders, crushed it, feel the bern, love, bernie, dentist, jonas brothers, excited, full moon, goodday
 ```
 
 #### 2.2.a Search:
