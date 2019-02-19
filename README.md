@@ -17,7 +17,7 @@ TenorJS can be easily installed via NPM: `npm i tenorjs`
 Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
 
 ### 2. Usage & Guides
-![GIF of an Anime character doing 1337 h4x0r stuff.](https://media1.tenor.com/images/dc934b5ef0b376eb48490fcbb0092099/tenor.gif)
+- **Attribution**
 First thing's first, I want to get something out of the way, attribution. To comply with Tenor's own policies, any content pulled from Tenor and published via this library has to be labeled in any one of these ways:
 1. **Powered By Tenor** - to be used in the GIF browsing experience
 2. **Search Tenor** - to be used as the placeholder text in the search bar
@@ -28,6 +28,8 @@ Attribution logos are provided by Tenor and can be found in this [Dropbox folder
 Alright, now that that's out of the way, let's take a look at some code.
 
 - **Call TenorJS**
+![GIF of an Anime character doing 1337 h4x0r stuff.](https://media1.tenor.com/images/dc934b5ef0b376eb48490fcbb0092099/tenor.gif)
+
 1. First thing we need to do is call TenorJS and initialize it by passing it the necessary configuration parameters, which in this case is, the Tenor developer API key and the necessary filters and locale configuration. You can get the developer API key by signing up for a **free** developer account [here](https://tenor.com/developer/keyregistration).
 
 2. Tenor offers a content filter in its API as well, the content filter takes one of these four values: **off**, **low**, **medium**, **high**. - You can manually configure its level when initializing the library, as demonstrated below.
