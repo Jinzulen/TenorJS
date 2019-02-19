@@ -17,6 +17,7 @@ TenorJS can be easily installed via NPM: `npm i tenorjs`
 Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
 
 ### 2. Usage & Guides
+![GIF of an Anime character doing 1337 h4x0r stuff.](https://media1.tenor.com/images/dc934b5ef0b376eb48490fcbb0092099/tenor.gif)
 First thing's first, I want to get something out of the way, attribution. To comply with Tenor's own policies, any content pulled from Tenor and published via this library has to be labeled in any one of these ways:
 1. **Powered By Tenor** - to be used in the GIF browsing experience
 2. **Search Tenor** - to be used as the placeholder text in the search bar
@@ -178,6 +179,7 @@ Tenor.Search.Random("food", "3").then(Results => {
 
 ### 6. Developer's Notes
 - This library is the product of sheer boredom and curiosity, it is released as-is without any guarantees of any kind on my part. I am not responsible for what anyone does with it.
+- If you've made something cool using TenorJS, then feel free to get in touch and I'll include a type of "Integrations" section in this README to give it a spotlight and highlight it to everyone.
 
 ### 7. TO-DO List
 1. Caching.
