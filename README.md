@@ -28,6 +28,7 @@ Attribution logos are provided by Tenor and can be found in this [Dropbox folder
 Alright, now that that's out of the way, let's take a look at some code.
 
 - **Call TenorJS**
+
 ![GIF of an Anime character doing 1337 h4x0r stuff.](https://media1.tenor.com/images/dc934b5ef0b376eb48490fcbb0092099/tenor.gif)
 
 1. First thing we need to do is call TenorJS and initialize it by passing it the necessary configuration parameters, which in this case is, the Tenor developer API key and the necessary filters and locale configuration. You can get the developer API key by signing up for a **free** developer account [here](https://tenor.com/developer/keyregistration).
