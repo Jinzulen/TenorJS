@@ -1,5 +1,6 @@
 # TenorJS
 ![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJinzulen%2FTenorJS.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FJinzulen%2FTenorJS?ref=badge_shield)
 
 [![https://nodei.co/npm/tenorjs.png](https://nodei.co/npm/tenorjs.png)](https://www.npmjs.com/package/tenorjs)
 
@@ -179,3 +180,6 @@ Tenor.Search.random("anime", "3").then(GIF => {
 1. Caching.
 2. Proper error handling.
 3. Native date formatting.
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FJinzulen%2FTenorJS.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FJinzulen%2FTenorJS?ref=badge_large)
