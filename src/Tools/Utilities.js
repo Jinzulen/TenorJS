@@ -5,9 +5,12 @@
  */
 const FS     = require("fs"),
       roi    = require("roi"),
+      Path   = require("path"),
       HTTPS  = require("https"),
       Colors = require("colors"),
       Moment = require("moment");
+
+const configFile = Path.join(__dirname, "../../tenor_config.json");
 
 exports.callAPI = function (Path, Callback)
 {
@@ -58,7 +61,7 @@ exports.callAPI = function (Path, Callback)
                         if (!Path.includes("categories"))
                         {
                               Data[i].created_stamp = Data[i].created;
-                              Data[i].created = Moment.unix(Data[i].created).format(require("../../tenor_config.json")["DateFormat"]);
+                              Data[i].created = Moment.unix(Data[i].created).format(require(configFile)["DateFormat"]);
                         }
                   }
 
@@ -123,7 +126,7 @@ exports.checkConfig = function (Creds)
 {
       function writeConfig()
       {
-            FS.writeFileSync("tenor_config.json", Creds, function (Error) {
+            FS.writeFileSync(configFile, Creds, function (Error) {
                   if (Error) throw Error;
                   console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Please restart.`));
                   process.exit(1);
@@ -132,9 +135,9 @@ exports.checkConfig = function (Creds)
 
       try
       {
-            if (FS.existsSync("tenor_config.json"))
+            if (FS.existsSync(configFile))
             {
-                  FS.readFile("tenor_config.json", "utf8", function (Error, Data) {
+                  FS.readFile(configFile, "utf8", function (Error, Data) {
                         if (Error) throw Error;
                         if (Data !== Creds) writeConfig();
                   });
@@ -151,7 +154,7 @@ exports.checkVersion = function ()
 {
       const Package = {
             "Git": "https://raw.githubusercontent.com/Jinzulen/TenorJS/master/package.json",
-            "Home": require("../../package.json")["version"]
+            "Home": require(Path.join(__dirname, "../../package.json"))["version"]
       };
 
       return roi.get(Package["Git"]).then(Response => {
