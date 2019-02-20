@@ -3,21 +3,19 @@
  * @license Apache 2.0
  * TenorJS - Lightweight NodeJS wrapper around the Tenor.com API.
  */
-const roi    = require("roi"),
+const FS     = require("fs"),
+      roi    = require("roi"),
       HTTPS  = require("https"),
       Colors = require("colors"),
       Moment = require("moment");
 
-const { DateFormat } = require("../../tenor_config.json");
-
 exports.callAPI = function (Path, Callback)
 {
       HTTPS.get(Path, (Result) => {
-            let Error;
-            let rawData = "";
+            let Error, rawData = "";
 
-            const Code = Result.statusCode;
-            const Type = Result.headers["content-type"];
+            const Code = Result.statusCode,
+                  Type = Result.headers["content-type"];
 
             if (Code !== 200)
             {
@@ -31,7 +29,11 @@ exports.callAPI = function (Path, Callback)
                   Error.code = "ERR_RES_NOT";
             }
 
-            if (Error) { Result.resume(); Callback(Error); }
+            if (Error)
+            {
+                  Result.resume();
+                  Callback(Error);
+            }
 
             Result.setEncoding("utf8");
 
@@ -56,8 +58,7 @@ exports.callAPI = function (Path, Callback)
                         if (!Path.includes("categories"))
                         {
                               Data[i].created_stamp = Data[i].created;
-                              Data[i].created = Moment.unix(Data[i].created).format(DateFormat);
-                  
+                              Data[i].created = Moment.unix(Data[i].created).format(require("../../tenor_config.json")["DateFormat"]);
                         }
                   }
 
@@ -116,6 +117,31 @@ exports.generateAnon = function (Endpoint)
 
             JSON.parse(Result).anon_id;
       });
+};
+
+exports.checkConfig = function (Creds)
+{
+      function writeConfig()
+      {
+            FS.writeFileSync("tenor_config.json", Creds, function (Error) {
+                  if (Error) throw Error;
+                  console.log(Colors.bold.green(`# [TenorJS] Changes have been made to the configuration file. Please restart.`));
+                  process.exit(1);
+            });
+      }
+
+      try
+      {
+            if (FS.existsSync("tenor_config.json"))
+            {
+                  FS.readFile("tenor_config.json", "utf8", function (Error, Data) {
+                        if (Error) throw Error;
+                        if (Data !== Creds) writeConfig();
+                  });
+            } else { writeConfig(); }
+      } catch (E) {
+            throw E;
+      }
 };
 
 /**
