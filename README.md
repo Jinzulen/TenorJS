@@ -2,7 +2,7 @@
 ![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/?branch=master)
 
 [//]: # (Must not forget to change the branch when v1.0.6 goes live on master)
-[![CodeFactor](https://www.codefactor.io/repository/github/jinzulen/tenorjs/badge/development)](https://www.codefactor.io/repository/github/jinzulen/tenorjs/overview/development) ![NPM Weekly Downloads](https://img.shields.io/npm/dw/tenorjs.svg) ![Status of dependencies](https://img.shields.io/david/jinzulen/tenorjs.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/jinzulen/tenorjs/badge/master)](https://www.codefactor.io/repository/github/jinzulen/tenorjs/overview/development) ![NPM Weekly Downloads](https://img.shields.io/npm/dw/tenorjs.svg) ![Status of dependencies](https://img.shields.io/david/jinzulen/tenorjs.svg)
 
 [![https://nodei.co/npm/tenorjs.png](https://nodei.co/npm/tenorjs.png)](https://www.npmjs.com/package/tenorjs)
 
@@ -10,14 +10,16 @@ TenorJS is a basic NodeJS wrapper around the [Tenor](https://tenor.com/) API.
 
 This is an unofficial third-party product that isn't in any way affiliated or sponsored by Tenor.
 
-**UPDATE:** v1.0.6 is now out! See what's new via [this changelog](https://github.com/Jinzulen/TenorJS/tree/master/changelogs/1.0.6.md)!
+**IMPORTANT UPDATE:** v1.0.6 is now out! See what's new via [this changelog](https://github.com/Jinzulen/TenorJS/tree/master/changelogs/1.0.6.md)!
 
 ### 1. Installation
-TenorJS can be easily installed via NPM: `npm i tenorjs`
+TenorJS can be easily installed via NPM: `npm i tenorjs`.
+
 Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
 
 ### 2. Usage & Guides
 - **Attribution**
+
 First thing's first, I want to get something out of the way, attribution. To comply with Tenor's own policies, any content pulled from Tenor and published via this library has to be labeled in any one of these ways:
 1. **Powered By Tenor** - to be used in the GIF browsing experience
 2. **Search Tenor** - to be used as the placeholder text in the search bar
