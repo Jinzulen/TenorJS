@@ -18,9 +18,7 @@ TenorJS can be easily installed via NPM: `npm i tenorjs`.
 Alternatively, you can download the ZIP from [here](https://github.com/Jinzulen/TenorJS/archive/master.zip) and require it in your project.
 
 ### 2. Usage & Guides
-- **Attribution**
-
-First thing's first, I want to get something out of the way, attribution. To comply with Tenor's own policies, any content pulled from Tenor and published via this library has to be labeled in any one of these ways:
+- **Attribution:** First thing's first, I want to get something out of the way, attribution. To comply with Tenor's own policies, any content pulled from Tenor and published via this library has to be labeled in any one of these ways:
 1. **Powered By Tenor** - to be used in the GIF browsing experience
 2. **Search Tenor** - to be used as the placeholder text in the search bar
 3. **Via Tenor** - to be used in the footer of a shared GIF
