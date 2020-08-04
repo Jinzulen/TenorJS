@@ -86,6 +86,8 @@ exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
                   if (typeof Callback === "function") Callback(Error);
 
                   pReject(Error);
+
+                  return;
             }
 
             if (typeof Callback === "function") Callback(null, Result[0]);
