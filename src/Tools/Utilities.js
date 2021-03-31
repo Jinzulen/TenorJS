@@ -25,7 +25,7 @@ exports.callAPI = function (Path, Callback)
                   Error      = `# [TenorJS] Could not send request @ ${Path} - Status Code: ${Code}`;
                   Error.code = "ERR_REQ_SEND";
             }
-            
+
             if (Type.indexOf("application/json") === -1)
             {
                   Error      = `# [TenorJS] Content received isn't JSON. Type: ${Type}`;
@@ -42,43 +42,37 @@ exports.callAPI = function (Path, Callback)
 
             Result.on("data", function (Buffer)
             {
-                  /**
-                   * Path checks.
-                   */
-                  if (Path.includes("categories"))
-                  {
-                        dForm = JSON.parse(Buffer).tags;
-                  } else {
-                        dForm = JSON.parse(Buffer).results;
-                  }
-                  
-                  let Data = dForm;
-      
-                  for (var i in Data)
-                  {
-                        if (!Data[i].title) Data[i].title = "Untitled";
-      
-                        if (!Path.includes("categories"))
-                        {
-                              Data[i].created_stamp = Data[i].created;
-                              Data[i].created = Moment.unix(Data[i].created).format(require(configFile)["DateFormat"]);
-                        }
-                  }
-
-                  rawData += JSON.stringify(Data);
+                  rawData += Buffer;
             });
 
             Result.on("end", () => {
-                  let Data = null, Error = null;
+                  let Data, Error = null, dForm;
 
-                  try
-                  {
-                        Data = JSON.parse(JSON.stringify(rawData)); 
-                  } catch (unusedError) {
+                  try {
+                        /**
+                         * Path checks.
+                         */
+                        if (Path.includes("categories")) {
+                              dForm = JSON.parse(rawData).tags;
+                        } else {
+                              dForm = JSON.parse(rawData).results;
+                        }
+
+                        Data = dForm;
+
+                        for (let data of Object.values(Data)) {
+                              if (!data.title) data.title = "Untitled";
+
+                              if (!Path.includes("categories")) {
+                                    data.created_stamp = data.created;
+                                    data.created = Moment.unix(data.created).format(require(configFile)["DateFormat"]);
+                              }
+                        }
+                  } catch (e) {
                         Error = "# [TenorJS] Failed to parse retrieved JSON.";
-                        Error.code = "ERR_JSON_PARSE";
+                        Error.code = 'ERR_JSON_PARSE';
                   }
-                  
+
                   Callback(Error, Data);
             });
       });
@@ -92,25 +86,27 @@ exports.manageAPI = function (Endpoint, Callback, pResolve, pReject)
                   if (typeof Callback === "function") Callback(Error);
 
                   pReject(Error);
+
+                  return;
             }
 
             if (typeof Callback === "function") Callback(null, Result[0]);
 
-            pResolve(JSON.parse(Result));
+            pResolve(Result);
       });
 };
 
 
 /**
  * Since there is no way to account for how this library will be
- * used, and as such, there is no way to account for the future 
+ * used, and as such, there is no way to account for the future
  * users of this library, dealing with the Anon ID falls to any
  * developer making use of TenorJS.
- * 
+ *
  * If you wish for Tenor's algorithms to automatically adjust to your
  * users' taste, you have to issue each of them their respective
  * anon ID and append it to each request made of Tenor's API.
- * 
+ *
  * I leave this method here for that purpose.
  */
 exports.generateAnon = function (Endpoint)
@@ -159,7 +155,7 @@ exports.checkVersion = function ()
 
       return roi.get(Package["Git"]).then(Response => {
             let Version = JSON.parse(Response.body).version;
-            
+
             if (Package["Home"] < Version)
             {
                   console.error(Colors.bold.red(`You are running an oudated version (v${Package["Home"]}) of TenorJS, v${Version} is available.\n
