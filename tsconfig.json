@@ -1,0 +1,18 @@
+{
+    "compileOnSave": true,
+    
+    "compilerOptions":
+    {
+        "baseUrl": ".",
+        "outDir": "lib/",
+        "rootDir": "src/",
+        "sourceMap": false,
+        "target": "ESNext",
+        "module": "commonjs"
+    },
+
+    "include":
+    [
+        "src/**/*"
+    ]
+}

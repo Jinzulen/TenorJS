@@ -1,4 +1,8 @@
+src/
 test.js
+.github/
+.gitignore
+tsconfig.json
 node_modules/
 package-lock.json
 tenor_config.json

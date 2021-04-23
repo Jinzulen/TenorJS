@@ -1,4 +1,6 @@
+lib/
 test.js
+.npmignore
 node_modules/
 package-lock.json
 tenor_config.json

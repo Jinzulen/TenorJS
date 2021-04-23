@@ -1,35 +1,42 @@
 {
   "name": "tenorjs",
-  "version": "1.0.7",
-  "description": "TenorJS is a lightweight NodeJS wrapper around the Tenor.com API.",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Feature-rich client for Tenor.",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "npm install"
+    "build": "tsc"
   },
   "keywords": [
-    "tenor",
-    "tenor.com",
-    "gif",
-    "discord",
-    "bots",
-    "wrapper",
     "api",
+    "gif",
     "mp4",
     "webm",
+    "bots",
+    "tenor",
+    "discord",
+    "wrapper",
     "tinygif",
     "tinymp4",
     "nanomp4",
-    "nanogif"
+    "nanogif",
+    "tenor.com"
   ],
-  "author": "Jinzulen",
+  "author": {
+    "name": "Jinzulen",
+    "email": "me@khalilg.com",
+    "url": "https://khalilg.com/"
+  },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/Jinzulen/TenorJS.git"
   },
+  "bugs": {
+    "url": "https://github.com/Jinzulen/TenorJS/issues"
+  },
+  "homepage": "https://github.com/Jinzulen/TenorJS",
   "dependencies": {
-    "colors": "^1.3.3",
     "moment": "^2.24.0",
-    "roi": "^0.18.0"
+    "node-fetch": "^2.6.1"
   }
 }
