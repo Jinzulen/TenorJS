@@ -30,14 +30,6 @@ exports.client = function (Credentials)
       if (!Filters.includes(Credentials.Filter.toLowerCase())) throw new Error ("Content filter level has to be one of these options: off, low, medium, high.");
 
       /**
-       * Check if the media filter abides by the available options.
-       */
-      if (Credentials.MediaFilter && !MediaFilters.includes(Credentials.MediaFilter.toLowerCase()))
-      {
-            throw new Error ("Media content filter has to be one of these options: basic, minimal.");
-      } else if (!Credentials.MediaFilter) { Credentials.MediaFilter = "minimal"; }
-
-      /**
        * Set API gateway and set content filter to lowercase.
        */
       Credentials.Gate   = "https://tenor.googleapis.com/v2";

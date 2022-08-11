@@ -1,3 +1,8 @@
+# ! Important !
+### TenorJS v1.0.10 includes small patches to ensure the wrapper doesn't break following the release of Tenor's V2 API. TenorJS v2 will be coming soon, until then, please report any issues that arise and I'll try to get to them as soon as possible.
+
+### If you get a "couldn't send request" error, it's most likely because you need to get a new API key [here](https://developers.google.com/tenor/guides/quickstart).
+
 # TenorJS
 ![https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master](https://api.travis-ci.org/Jinzulen/TenorJS.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Jinzulen/TenorJS/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Jinzulen/TenorJS?targetFile=package.json) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jinzulen/TenorJS/?branch=master)
 
@@ -41,7 +46,7 @@ Alright, now that that's out of the way, let's take a look at some code.
 5. In order to alleviate some pressure off of developers and ensure not to inconvenience them by adding one more task to their schedule, native [date formatting has been implemented into TenorJS as of v1.0.6](https://github.com/Jinzulen/TenorJS/blob/master/changelogs/1.0.6.md)! To aid developers further with matters concerning localization, TenorJS allows them to set custom date formats, however, if they don't; TenorJS will by default use the date format shown in the example below.
 ```js
 const Tenor = require("tenorjs").client({
-    "Key": "YOUR DEVELOPER KEY HERE", // https://tenor.com/developer/keyregistration
+    "Key": "YOUR DEVELOPER KEY HERE", // https://developers.google.com/tenor/guides/quickstart
     "Filter": "off", // "off", "low", "medium", "high", not case sensitive
     "Locale": "en_US", // Your locale here, case-sensitivity depends on input
     "MediaFilter": "minimal", // either minimal or basic, not case sensitive
