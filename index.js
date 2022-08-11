@@ -9,7 +9,7 @@ const Utilities = require("./src/Tools/Utilities");
 exports.client = function (Credentials)
 {
       const Filters      = ["off", "low", "medium", "high"],
-            MediaFilters = ["basic", "minimal"];
+            MediaFilters = ["gif", "mp4", "nanomp4", "nanogif", "tinymp4", "tinygif"];
 
       /**
        * Credentials checks.
@@ -40,7 +40,7 @@ exports.client = function (Credentials)
       /**
        * Set API gateway and set content filter to lowercase.
        */
-      Credentials.Gate   = "https://api.tenor.com/v1";
+      Credentials.Gate   = "https://tenor.googleapis.com/v2";
       Credentials.Filter = Credentials.Filter.toLowerCase();
 
       /**
