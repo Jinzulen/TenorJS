@@ -1,3 +1,10 @@
+# Important notice
+
+I was planning a complete refactor of this to modernize it, but as it turns out, Tenor is discontinuing its API service, as a result, I'm archiving this project.
+
+- - - - - - - - - - - - - - - -
+
+
 # ! Important !
 ### TenorJS v1.0.10 includes small patches to ensure the wrapper doesn't break following the release of Tenor's V2 API. TenorJS v2 will be coming soon, until then, please report any issues that arise and I'll try to get to them as soon as possible.
 
