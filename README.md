@@ -5,8 +5,8 @@ I was planning a complete refactor of this to modernize it, but as it turns out,
 - - - - - - - - - - - - - - - -
 
 
-# ! Important !
-### TenorJS v1.0.10 includes small patches to ensure the wrapper doesn't break following the release of Tenor's V2 API. TenorJS v2 will be coming soon, until then, please report any issues that arise and I'll try to get to them as soon as possible.
+### ! Important !
+#### TenorJS v1.0.10 includes small patches to ensure the wrapper doesn't break following the release of Tenor's V2 API. TenorJS v2 will be coming soon, until then, please report any issues that arise and I'll try to get to them as soon as possible.
 
 ### If you get a "couldn't send request" error, it's most likely because you need to get a new API key [here](https://developers.google.com/tenor/guides/quickstart).
 
